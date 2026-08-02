@@ -27,12 +27,13 @@ const music = document.getElementById(
     "love-music"
 );
 
-
+console.log(music);
 
 const startMusicBtn =
     document.getElementById(
         "start-music"
     );
+    
 
 
 const musicPopup =
@@ -96,8 +97,8 @@ const loaderTexts = {
 
 
     fa: [
-    "هرچه عدد سن تو بالاتر می‌رود",
-    "عشق من نیز به تو بیشتر می‌شود",
+    "هرچه عدد سن تو بالاتر میره",
+    "عشق منم به تو بیشتر می‌شه",
     "امیدوارم تا پایان عمر روزهای تولدت را در کنار هم جشن بگیریم",
     "تولدت مبارک",
 ],
@@ -186,7 +187,7 @@ async function startLoader(){
 
     await typeText(
         typingLoader,
-        "نگین ❤️"
+        "682"
     );
 
 
@@ -235,34 +236,19 @@ window.addEventListener(
 ========================================================= */
 
 
-
 function enableMusic(){
 
+    console.log("clicked");
 
-    music.volume =
-        volume.value;
-
-
+    console.log(music);
 
     music.play()
     .then(()=>{
-
-
-        musicPopup.classList.add(
-            "hidden"
-        );
-
-
+        console.log("playing");
     })
-    .catch(()=>{
-
-        console.log(
-            "Autoplay blocked"
-        );
-
+    .catch(error=>{
+        console.log(error);
     });
-
-
 
 }
 
@@ -1171,41 +1157,27 @@ function handleSwipe(){
 ========================================================= */
 
 
-const envelope =
-    document.getElementById(
-        "envelope"
-    );
+const envelope = document.getElementById("envelope");
+const openLetter = document.getElementById("open-letter");
+const paper = document.querySelector(".paper");
 
+paper.style.display = "none";
 
+openLetter.addEventListener("click", () => {
 
-const openLetter =
-    document.getElementById(
-        "open-letter"
-    );
+    if (paper.style.display === "none") {
 
+        paper.style.display = "block";
+        envelope.classList.add("open");
 
+    } else {
 
+        paper.style.display = "none";
+        envelope.classList.remove("open");
 
+    }
 
-if(openLetter){
-
-
-    openLetter.addEventListener(
-        "click",
-        ()=>{
-
-
-            envelope.classList.toggle(
-                "open"
-            );
-
-
-
-        }
-    );
-
-
-}
+});
 /* =========================================================
    FINAL EMOTIONAL TYPING SCENE
 ========================================================= */
@@ -2152,7 +2124,15 @@ if(
 
 
 
+startMusicBtn.addEventListener("click", function (event) {
 
+    event.preventDefault();
+
+    enableMusic();
+
+    musicPopup.style.display = "none";
+
+});
 
 /* =========================================================
    PREVENT IMAGE DRAG
