@@ -1407,7 +1407,7 @@ function createFloatingHeart(){
 
     heart.style.fontSize =
         (
-            15 +
+            25 +
             Math.random()*30
         )
         + "px";
@@ -1634,7 +1634,7 @@ function createFirework(){
 
     firework.style.top =
         (
-            20 +
+            29 +
             Math.random()*50
         )
         + "vh";
